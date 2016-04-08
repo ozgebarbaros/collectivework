@@ -1,0 +1,19 @@
+[DB]
+host:<db host>
+port:<db port>
+database:<db name>
+dbuser:<db user which is granted for login>
+pass:<db user's password>
+
+[DJANGO]
+secret_key:<randomly generated application secret key>
+
+[EMAIL]
+fromaddress:<email address from which notifications will be sent>
+host:<smtp host> 
+port:<smtp port>
+user:<smtp user for authentication>
+
+[TWITTER]
+customerkey:<Consumer Key (API Key)>
+customerapikey:<Consumer Secret (API Secret)>
