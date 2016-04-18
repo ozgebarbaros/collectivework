@@ -29,6 +29,12 @@
 				<ul class="sidebar-menu">
 					{% if user and not user.is_anonymous%}
 					<li class="active">
+						<a href="/messages/inbox">
+							<i class="fa fa-bolt"></i> 
+							<span>Mesajlar</span>
+						</a>
+					</li>
+					<li class="active">
 						<a href="{% url 'create_ticket' %}">
 							<i class="fa fa-bolt"></i> 
 							<span>Yeni İş Oluştur</span>

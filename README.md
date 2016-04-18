@@ -12,3 +12,6 @@
 * oauth2==1.9.0.post1
 * oauthlib==1.0.3
 * httplib2==0.9.2
+* django-postman
+* django-notification
+* django-mailer

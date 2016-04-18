@@ -14,9 +14,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+import postman
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^messages/', include('postman.urls', namespace='postman', app_name='postman')),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^$', 'collectivework.views.login',name='login'),
     #url(r'^home/$', 'collectivework.views.home', name='home'),

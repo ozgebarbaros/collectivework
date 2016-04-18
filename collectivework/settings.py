@@ -39,6 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'collectivework',
     'social.apps.django_app.default',
+    'postman',
+    'notification',
+    'mailer'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -174,3 +177,8 @@ SOCIAL_AUTH_TWITTER_KEY = tconf.getcustomerkey()
 SOCIAL_AUTH_TWITTER_SECRET = tconf.getcustomersecret()
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
+# Postman Settings
+POSTMAN_DISALLOW_ANONYMOUS = True
+POSTMAN_DISALLOW_MULTIRECIPIENTS = True
+POSTMAN_DISALLOW_COPIES_ON_REPLY = True
+POSTMAN_AUTO_MODERATE_AS = True
