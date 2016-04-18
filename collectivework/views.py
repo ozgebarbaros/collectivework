@@ -36,7 +36,7 @@ def about(request):
     return render(request, 'about.html')
 
 
-@staff_member_required(login_url='/')
+@staff_member_required
 def listmoderationrequests(request):
     data = {}
     return render(request, 'listmoderationrequests.html', data)
