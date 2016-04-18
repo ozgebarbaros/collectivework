@@ -21,6 +21,11 @@ urlpatterns = [
     url(r'^$', 'collectivework.views.login',name='login'),
     url(r'^home/$', 'collectivework.views.home', name='home'),
     url(r'^logout/$', 'collectivework.views.logout', name='logout'),
-
+    url(r'^list_moderation_request/$', 'collectivework.views.listmoderationrequests', name='listmoderationrequests'),
+    url(r'^create_ticket/$', 'collectivework.views.create_ticket', name='create_ticket'),
+    url(r'^list_my_ticket/$', 'collectivework.views.list_my_ticket', name='list_my_ticket'),
+    url(r'^all_ticket_list/$', 'collectivework.views.all_ticket_list', name='all_ticket_list'),
+    url(r'^siterules/$', 'collectivework.views.siterules', name='siterules'),
+    url(r'^help/$', 'collectivework.views.help', name='help'),
 
 ]
