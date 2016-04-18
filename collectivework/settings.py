@@ -172,4 +172,5 @@ EMAIL_HOST_PASSWORD = emailconf.password
 tconf = TwitterConf()
 SOCIAL_AUTH_TWITTER_KEY = tconf.getcustomerkey()
 SOCIAL_AUTH_TWITTER_SECRET = tconf.getcustomersecret()
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
