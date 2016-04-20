@@ -29,11 +29,19 @@
 				<ul class="sidebar-menu">
 					{% if user and not user.is_anonymous%}
 					<li class="active">
-						<a href="/messages/inbox">
-							<i class="fa fa-bolt"></i> 
+          					<a href="#">
+                                                        <i class="fa fa-envelope-o"></i>
 							<span>Mesajlar</span>
-						</a>
-					</li>
+            						<i class="fa fa-angle-left pull-right"></i>
+          					</a>
+      						<ul class="active">
+      						  <li><a href="/messages/inbox"> Gelen Kutusu</a></li>
+      						  <li><a href="/messages/sent"> Gönderilenler</a></li>
+      						  <li><a href="/messages/write"> Olustur</a></li>
+      						  <li><a href="/messages/archives"> Arşiv</a></li>
+      						  <li><a href="/messages/trash"> Çöp</a></li>
+      						</ul>
+      					</li>
 					<li class="active">
 						<a href="{% url 'create_ticket' %}">
 							<i class="fa fa-bolt"></i> 

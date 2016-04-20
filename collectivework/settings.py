@@ -24,7 +24,7 @@ DJANGOSETTINGS = DjangoSettings()
 SECRET_KEY = DJANGOSETTINGS.getsecretkey()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False 
 
 ALLOWED_HOSTS = ['lazimlik.org','www.lazimlik.org']
 
@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
     'postman',
     'notification',
-    'mailer'
+    'mailer',
+    'collectivework.templatetags'
 )
 
 MIDDLEWARE_CLASSES = (
