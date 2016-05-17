@@ -1,11 +1,12 @@
 # -*- coding:utf-8 -*-
-
+from django.http import HttpResponse
 from django.shortcuts import render_to_response, redirect, render
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
 from collectivework.models import Ticket
+from collectivework.forms import CreateTicketForm
 
 # from django.template.context import RequestContext
 
@@ -25,7 +26,14 @@ def login(request):
 
 @login_required(login_url='/')
 def create_ticket(request):
-    return render(request, 'create_ticket.html')
+    form = CreateTicketForm()
+    if request.POST:
+        form = CreateTicketForm(request.POST)
+        if form.is_valid():
+            return HttpResponse("OK")
+        else:
+            return HttpResponse("NOK")
+    return render(request, 'create_ticket.html',{'form':form})
 
 
 @login_required(login_url='/')
