@@ -1,5 +1,7 @@
-# -*- coding:utf-8  -*-
+#!-*- coding:utf-8 -*-
+
 import datetime
+
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -15,17 +17,15 @@ class Ticket(models.Model):
     title = models.CharField(max_length=100, verbose_name="Başlık")
     short_desc = models.CharField(max_length=300, verbose_name="Kısa açıklama")
     long_desc = models.CharField(max_length=1000, verbose_name="Uzun açıklama", blank=True, null=True)
-    creationdate = models.DateField(verbose_name="Olusturulma tarihi", default=datetime.date.today)
-    enddate = models.DateField(verbose_name="Geçerlilik süresi", default=datetime.date.today)
-    requestinguser = models.ForeignKey(User, related_name="requestinguser", verbose_name="Talepte Bulunan Kulanici")
+    creation_date = models.DateField(verbose_name="Olusturulma tarihi", default=datetime.date.today)
+    end_date = models.DateField(verbose_name="Geçerlilik süresi", default=datetime.date.today)
+    request_in_user = models.ForeignKey(User, related_name="requestinguser", verbose_name="Talepte Bulunan Kulanıcı")
     accepted = models.BooleanField(default=False)
     rejected = models.BooleanField(default=False)
     completed = models.BooleanField(default=False)
-    assigneduser = models.ForeignKey(User, related_name="assigneduser", verbose_name="Gönüllü", blank=True, null=True)
+    assigned_user = models.ForeignKey(User, related_name="assigned_user", verbose_name="Gönüllü", blank=True, null=True)
     tag = models.ManyToManyField(TicketTag, verbose_name="Etiket")
     progress = models.CharField(max_length=3, verbose_name="İşin tamamlanma oranı", blank=True, null=True)
+
     def __unicode__(self):
         return self.title
-
-
-

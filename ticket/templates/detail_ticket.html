@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="padding-top: 30px; padding-left: 30px;">
+
+        <div class="col-lg-5">
+
+            <div class="row">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ title }}</h3>
+                </div>
+                <form role="form" method="POST">
+                    {% csrf_token %}
+                    <div class="box-body">
+                        {% for field in form.visible_fields %}
+                            {% if field.id == 'datepicker' %}
+                                <div class="form-group">
+                                    <label>{{ field.label }}</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        {{ field }}
+                                    </div>
+                                </div>
+
+                            {% else %}
+                                <div class="form-group">
+                                    <label>{{ field.label }}</label>
+                                    {{ field }}
+                                    {% if field.errors %}
+                                        <div class="row">
+                                            <div class="col-md-6 col-md-offset-2">
+                                                <span class="label label-danger">{{ field.label }}: {{ field.errors|striptags }}</span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="box-footer">
+                        {% if creation %}
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                        {% endif %}
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
