@@ -1,3 +1,3 @@
 # collectivework
 
-Kurulum için [INSTALL.md](https://github.com/ozgebarbaros/collectivework/INSTALL.md) dosyası içindeki adımları izleyebilirsiniz.
+Kurulum için [INSTALL.md](INSTALL.md) dosyası içindeki adımları izleyebilirsiniz.
