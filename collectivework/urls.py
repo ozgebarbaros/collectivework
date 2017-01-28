@@ -14,20 +14,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-import postman
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^messages/', include('postman.urls', namespace='postman', app_name='postman')),
-    url('', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^$', 'collectivework.views.login',name='login'),
-    #url(r'^home/$', 'collectivework.views.home', name='home'),
+    url(r'^ticket/', include('ticket.urls')),
     url(r'^logout/$', 'collectivework.views.logout', name='logout'),
-    url(r'^list_moderation_request/$', 'collectivework.views.listmoderationrequests', name='listmoderationrequests'),
-    url(r'^create_ticket/$', 'collectivework.views.create_ticket', name='create_ticket'),
-    url(r'^list_my_ticket/$', 'collectivework.views.list_my_tickets', name='list_my_ticket'),
-    #url(r'^all_ticket_list/$', 'collectivework.views.all_ticket_list', name='all_ticket_list'),
-    url(r'^siterules/$', 'collectivework.views.siterules', name='siterules'),
+    url(r'^site_rules/$', 'collectivework.views.site_rules', name='site_rules'),
     url(r'^help/$', 'collectivework.views.help', name='help'),
-
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^$', 'collectivework.views.login', name='login'),
 ]
