@@ -1,38 +1,41 @@
 # -*- coding: utf-8 -*-
 import ConfigParser
+
 from collectivework.settings import CONF_FILE
 
-class DBconfig:
-    dbhost = None
-    dbport = None
-    database = None
-    dbuser = None
-    dbpass = None
+
+class DBConfig:
+    db_host = None
+    db_port = None
+    db_name = None
+    db_user = None
+    db_pass = None
 
     def __init__(self):
         config = ConfigParser.ConfigParser()
         config.read(CONF_FILE)
         section = "DB"
-        self.dbhost = config.get(section, "host")
-        self.dbport = config.get(section, "port")
-        self.database = config.get(section, "database")
-        self.dbuser = config.get(section, "dbuser")
-        self.dbpass = config.get(section, "pass")
+        self.db_host = config.get(section, "host")
+        self.db_port = config.get(section, "port")
+        self.db_name = config.get(section, "name")
+        self.db_user = config.get(section, "user")
+        self.db_pass = config.get(section, "pass")
 
-    def getdbhost(self):
-        return self.dbhost
+    def get_db_host(self):
+        return self.db_host
 
-    def getdbport(self):
-        return self.dbport
+    def get_db_port(self):
+        return self.db_port
 
-    def getdatabase(self):
-        return self.database
+    def get_db_name(self):
+        return self.db_name
 
-    def getdbuser(self):
-        return self.dbuser
+    def get_db_user(self):
+        return self.db_user
 
-    def getdbpass(self):
-        return self.dbpass
+    def get_db_pass(self):
+        return self.db_pass
+
 
 class DjangoSettings:
     secret_key = None
@@ -43,7 +46,7 @@ class DjangoSettings:
         section = "DJANGO"
         self.secret_key = config.get(section, "secret_key")
 
-    def getsecretkey(self):
+    def get_secret_key(self):
         return self.secret_key
 
 
@@ -52,7 +55,7 @@ class EmailSettings:
     port = None
     username = None
     password = None
-    fromaddress = None
+    from_address = None
 
     def __init__(self):
         config = ConfigParser.ConfigParser()
@@ -61,24 +64,23 @@ class EmailSettings:
         self.host = config.get(section, "host")
         self.port = config.get(section, "port")
         self.username = config.get(section, "user")
-        #self.password = config.get(section, "password")
-        self.fromaddress = config.get(section, "fromaddress")
+        self.password = config.get(section, "password")
+        self.from_address = config.get(section, "from_address")
 
 
 class TwitterConf:
-    customerkey = None
-    customersecret = None
+    consumer_key = None
+    consumer_secret = None
 
     def __init__(self):
         config = ConfigParser.ConfigParser()
         config.read(CONF_FILE)
         section = "TWITTER"
-        self.customerkey = config.get(section, "customerkey")
-        self.customersecret = config.get(section, "customersecret")
+        self.consumer_key = config.get(section, "consumer_key")
+        self.consumer_secret = config.get(section, "consumer_secret")
 
-    def getcustomerkey(self):
-        return self.customerkey
-    
-    def getcustomersecret(self):
-        return self.customersecret
+    def get_consumer_key(self):
+        return self.consumer_key
 
+    def get_consumer_secret(self):
+        return self.consumer_secret

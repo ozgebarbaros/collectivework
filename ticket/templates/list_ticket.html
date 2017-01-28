@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="content-header">
+        <h1>
+            Yapılacak islerimiz var
+            <small>..gonullu</small>
+        </h1>
+    </section>
+    <div style="padding-top: 30px">
+    </div>
+
+    {% if not user.is_authenticated %}
+        <div class="callout callout-info">
+            <p>İş üstlenmek veya yardım istemek için öncelikle Twitter hesabınız ile giriş yapın!</p>
+        </div>
+    {% endif %}
+
+    <ul class="timeline col-lg-8 col-md-8">
+        {% for ticket in tickets %}
+            <li class="time-label">
+                {% ifchanged ticket.creation_date %}
+                    <span class="bg-red">{{ ticket.creation_date }}</span>
+                {% endifchanged %}
+            </li>
+            <li>
+                <i class="fa fa-ticket bg-blue"></i>
+                <div class="timeline-item">
+                    <span class="time">İş Numarası: {{ ticket.pk }}</span>
+
+                    <h3 class="timeline-header"><a href="{% url 'show_ticket' ticket.pk %}">{{ ticket.title }}</a></h3>
+
+                    <div class="timeline-body">
+                        {{ ticket.short_desc }}
+                    </div>
+
+                    <div class="timeline-footer">
+                        <div class="progress xs">
+                            <div class="progress-bar progress-bar-green" style="width: {{ ticket.progress }}%;"></div>
+                        </div>
+                        {% for tag in ticket.tag.all %}
+                            <small class="label label-warning">{{ tag.name }}</small>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </li>
+
+        {% empty %}
+
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-warning"></i> Uyarı!</h4>
+                Üzgünüz, burada henüz iş yok!
+            </div>
+
+        {% endfor %}
+
+    </ul>
+
+{% endblock %}
