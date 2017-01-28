@@ -15,13 +15,17 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from collectivework.views import login, logout, site_rules, help
+
+from postman import urls as postman_urls
+from ticket import urls as ticket_urls
+
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^messages/', include('postman.urls', namespace='postman', app_name='postman')),
-    url(r'^ticket/', include('ticket.urls')),
-    url(r'^logout/$', 'collectivework.views.logout', name='logout'),
-    url(r'^site_rules/$', 'collectivework.views.site_rules', name='site_rules'),
-    url(r'^help/$', 'collectivework.views.help', name='help'),
-    url('', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^$', 'collectivework.views.login', name='login'),
+    url(r'^messages/', include(postman_urls, namespace='postman', app_name='postman')),
+    url(r'^ticket/', include(ticket_urls)),
+    url(r'^logout/$', logout, name='logout'),
+    url(r'^site_rules/$', site_rules, name='site_rules'),
+    url(r'^help/$', help, name='help'),
+    url(r'^$', login, name='login'),
 ]

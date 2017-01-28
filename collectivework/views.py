@@ -5,6 +5,7 @@ from django.shortcuts import redirect, render
 
 
 def login(request):
+    print("hebelek")
     return HttpResponseRedirect("/ticket/")
 
 

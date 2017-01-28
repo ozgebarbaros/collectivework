@@ -21,9 +21,7 @@
                     </div>
                 {% else %}
                     <div class="pull-left info">
-
-                        <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"><i
-                                class="fa fa-twitter text-success"></i>Twitter ile Baglan</a>
+				Login
                     </div>
                 {% endif %}
             </div>
@@ -37,15 +35,15 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="active" style="list-style-type: none;">
-                            <li class="active"><a href="/messages/inbox"><i
+                            <li class="active"><a href="{% url 'postman:inbox'%}"><i
                                     class="fa fa-inbox"></i><span> Gelen Kutusu</span></a></li>
-                            <li class="active"><a href="/messages/sent"><i
+                            <li class="active"><a href="{% url 'postman:sent'%}"><i
                                     class="fa fa-plane"></i><span> Gönderilenler</span></a></li>
-                            <li class="active"><a href="/messages/write"><i
+                            <li class="active"><a href="{% url 'postman:write'%}"><i
                                     class="fa fa-pencil"></i><span> Olustur</span></a></li>
-                            <li class="active"><a href="/messages/archives"><i
+                            <li class="active"><a href="{% url 'postman:archive' %}"><i
                                     class="fa fa-floppy-o"></i><span> Arşiv</span></a></li>
-                            <li class="active"><a href="/messages/trash"><i class="fa fa-trash-o"></i><span> Çöp</span></a>
+                            <li class="active"><a href="{% url 'postman:trash'%}"><i class="fa fa-trash-o"></i><span> Çöp</span></a>
                             </li>
                         </ul>
                     </li>

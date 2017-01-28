@@ -13,11 +13,11 @@ Including another URLconf
     1. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-
+from ticket.views import list_ticket, create_ticket, list_my_ticket, list_moderation_requests, show_ticket
 urlpatterns = [
-    url(r'^$', 'ticket.views.list_ticket', name='list_ticket'),
-    url(r'^create/$', 'ticket.views.create_ticket', name='create_ticket'),
-    url(r'^my/$', 'ticket.views.list_my_ticket', name='list_my_ticket'),
-    url(r'^list_moderation_request/$', 'ticket.views.list_moderation_requests', name='list_moderation_requests'),
-    url(r'^(?P<id>\w+)/$', 'ticket.views.show_ticket', name='show_ticket'),
+    url(r'^$', list_ticket, name='list_ticket'),
+    url(r'^create/$', create_ticket, name='create_ticket'),
+    url(r'^my/$', list_my_ticket, name='list_my_ticket'),
+    url(r'^list_moderation_request/$', list_moderation_requests, name='list_moderation_requests'),
+    url(r'^(?P<id>\w+)/$', show_ticket, name='show_ticket'),
 ]
