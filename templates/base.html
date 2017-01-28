@@ -5,7 +5,7 @@
 
 <body class="skin-blue fixed">
 <header class="header">
-    <a href="/" class="logo">Lazımlık</a>
+    <a href="/" class="logo">Collectivework</a>
     <nav class="navbar navbar-static-top" role="navigation">
     </nav>
 </header>
@@ -17,11 +17,12 @@
                 {% if user and not user.is_anonymous %}
                     <div class="pull-left info">
                         <p>{{ user.get_full_name }}</p>
-                        <a href="{% url 'logout' %}"><i class="fa fa-circle text-success"></i>Çıkış Yap</a>
+                        <a href="{% url 'userprofile:logout' %}"><i class="fa fa-circle text-success"></i>Çıkış Yap</a>
                     </div>
                 {% else %}
                     <div class="pull-left info">
-				Login
+                        <a href="{% url 'userprofile:login' %}"><i
+                                class="fa fa-user text-success"></i>Kullanıcı Girişi</a>
                     </div>
                 {% endif %}
             </div>
@@ -48,20 +49,20 @@
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="{% url 'create_ticket' %}">
+                        <a href="{% url 'ticket:create_ticket' %}">
                             <i class="fa fa-edit"></i>
                             <span>Yeni İş Oluştur</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="{% url 'list_my_ticket' %}">
+                        <a href="{% url 'ticket:list_my_ticket' %}">
                             <i class="fa fa-list-alt"></i>
                             <span>İşlerim</span>
                         </a>
                     </li>
                     {% if user.is_staff %}
                         <li class="active">
-                            <a href="{% url 'list_moderation_requests' %}">
+                            <a href="{% url 'ticket:list_moderation_requests' %}">
                                 <i class="fa fa-tasks"></i>
                                 <span>Moderasyondaki isler</span>
                             </a>
@@ -92,5 +93,3 @@
 
 
 </body>
-
-       

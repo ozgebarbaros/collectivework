@@ -1,5 +1,3 @@
-#!-*- coding:utf-8 -*-
-
 import datetime
 
 from django.contrib.auth.models import User
@@ -9,7 +7,7 @@ from django.db import models
 class TicketTag(models.Model):
     name = models.CharField(max_length=20, verbose_name="Etiket")
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -27,5 +25,5 @@ class Ticket(models.Model):
     tag = models.ManyToManyField(TicketTag, verbose_name="Etiket")
     progress = models.CharField(max_length=3, verbose_name="İşin tamamlanma oranı", blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title

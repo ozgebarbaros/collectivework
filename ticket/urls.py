@@ -1,5 +1,4 @@
 """collectivework URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
 Examples:
@@ -13,7 +12,9 @@ Including another URLconf
     1. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+
 from ticket.views import list_ticket, create_ticket, list_my_ticket, list_moderation_requests, show_ticket
+
 urlpatterns = [
     url(r'^$', list_ticket, name='list_ticket'),
     url(r'^create/$', create_ticket, name='create_ticket'),

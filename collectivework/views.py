@@ -1,12 +1,4 @@
-# -*- coding:utf-8 -*-
-from django.contrib.auth import logout as auth_logout
-from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render
-
-
-def login(request):
-    print("hebelek")
-    return HttpResponseRedirect("/ticket/")
+from django.shortcuts import render
 
 
 def help(request):
@@ -19,8 +11,3 @@ def site_rules(request):
 
 def about(request):
     return render(request, 'about.html')
-
-
-def logout(request):
-    auth_logout(request)
-    return redirect('/')

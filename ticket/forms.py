@@ -1,5 +1,3 @@
-# -*- coding:utf-8  -*-
-
 from django.forms import ModelForm
 from django.forms.widgets import TextInput, HiddenInput, Textarea, DateInput, SelectMultiple
 
