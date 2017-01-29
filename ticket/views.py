@@ -2,7 +2,9 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 
+from collectivework import settings
 from ticket.forms import CreateTicketForm
 from ticket.models import Ticket
 
@@ -21,7 +23,7 @@ def list_ticket(request):
     return render(request, 'list_ticket.html', {'tickets': tickets})
 
 
-@login_required(login_url='/')
+@login_required(login_url=settings.LOGIN_URL)
 def create_ticket(request):
     if request.POST:
         form = CreateTicketForm(request.POST)
@@ -35,7 +37,7 @@ def create_ticket(request):
     return render(request, 'detail_ticket.html', {'form': form, 'title': "Yeni İstek Oluştur", 'creation': True})
 
 
-@login_required(login_url='/')
+@login_required(login_url=settings.LOGIN_URL)
 def show_ticket(request, id):
     ticket = get_object_or_404(Ticket, pk=id)
     form = CreateTicketForm(instance=ticket)
@@ -43,7 +45,7 @@ def show_ticket(request, id):
                   {'form': form, 'title': "İstek Numarası: %s" % ticket.pk, 'creation': False})
 
 
-@login_required(login_url='/')
+@login_required(login_url=settings.LOGIN_URL)
 def list_my_ticket(request):
     tickets = Ticket.objects.filter(assigned_user=request.user).order_by('-creation_date')
     return render(request, 'list_ticket.html', {'tickets': tickets})
