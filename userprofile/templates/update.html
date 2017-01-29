@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1>
+            Profil Güncelleme
+        </h1>
+    </section>
+    <div class="login-box">
+        <div class="login-box-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if user_form %}
+                    {% for field in user_form.visible_fields %}
+                        <div class="form-group">
+                            <div class="row">
+
+                                <b>{{ field.label }}</b>
+                                {{ field }}
+                            </div>
+                            {% if field.errors %}
+                                <div class="row">
+									<span class="label label-danger">
+										{{ field.label }}: {{ field.errors|striptags }}
+									</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% if userprofile_form %}
+                    {% for field in userprofile_form.visible_fields %}
+                        <div class="form-group">
+                            <div class="row">
+                                <b>{{ field.label }}</b>
+                                {{ field }}
+                            </div>
+                            {% if field.errors %}
+                                <div class="row">
+									<span class="label label-danger">
+										{{ field.label }}: {{ field.errors|striptags }}
+									</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="row">
+                    <input type="submit" class="btn btn-primary pull-right" value="Kaydet"/>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -15,13 +15,20 @@
         <section class="sidebar">
             <div class="user-panel">
                 {% if user and not user.is_anonymous %}
-                    <div class="pull-left info">
-                        <p>{{ user.get_full_name }}</p>
-                        <a href="{% url 'userprofile:logout' %}"><i class="fa fa-circle text-success"></i>Çıkış Yap</a>
+                    <div class="user-panel">
+                        {% if user.userprofile and user.userprofile.profile_photo %}
+                            <div class="pull-left image">
+                                <img src="/{{ user.userprofile.profile_photo.url }}" class="img-circle" alt="Fotograf">
+                            </div>
+                        {% endif     %}
+                        <div class="pull-left info">
+                            <p>{{ user.username }} </p>
+                            <a href="{% url 'userprofile:logout' %}"><i class="fa fa-circle text-success"></i>Çıkış Yap</a>
+                        </div>
                     </div>
                 {% else %}
                     <div class="pull-left info">
-                        <a href="{% url 'userprofile:login' %}"><i
+                        <a href="{% url 'userprofile:login' %}?next={{ request.path }}"><i
                                 class="fa fa-user text-success"></i>Kullanıcı Girişi</a>
                     </div>
                 {% endif %}
@@ -30,21 +37,27 @@
             <ul class="sidebar-menu">
                 {% if user and not user.is_anonymous %}
                     <li class="active">
+                        <a href="{% url 'userprofile:update' %}">
+                            <i class="fa fa-edit"></i>
+                            <span>Profil Güncelleme</span>
+                        </a>
+                    </li>
+                    <li class="active">
                         <a href="#">
                             <i class="fa fa-envelope-o"></i>
                             <span>Mesajlar</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="active" style="list-style-type: none;">
-                            <li class="active"><a href="{% url 'postman:inbox'%}"><i
+                            <li class="active"><a href="{% url 'postman:inbox' %}"><i
                                     class="fa fa-inbox"></i><span> Gelen Kutusu</span></a></li>
-                            <li class="active"><a href="{% url 'postman:sent'%}"><i
+                            <li class="active"><a href="{% url 'postman:sent' %}"><i
                                     class="fa fa-plane"></i><span> Gönderilenler</span></a></li>
-                            <li class="active"><a href="{% url 'postman:write'%}"><i
+                            <li class="active"><a href="{% url 'postman:write' %}"><i
                                     class="fa fa-pencil"></i><span> Olustur</span></a></li>
                             <li class="active"><a href="{% url 'postman:archive' %}"><i
                                     class="fa fa-floppy-o"></i><span> Arşiv</span></a></li>
-                            <li class="active"><a href="{% url 'postman:trash'%}"><i class="fa fa-trash-o"></i><span> Çöp</span></a>
+                            <li class="active"><a href="{% url 'postman:trash' %}"><i class="fa fa-trash-o"></i><span> Çöp</span></a>
                             </li>
                         </ul>
                     </li>

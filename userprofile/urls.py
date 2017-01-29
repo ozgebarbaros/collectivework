@@ -15,9 +15,11 @@ from django.conf.urls import url
 
 
 from ticket.views import list_ticket, create_ticket, list_my_ticket, list_moderation_requests, show_ticket
-from userprofile.views import login, logout
+from userprofile.views import login, logout, signup, update
 
 urlpatterns = [
     url(r'^login/$', login, name="login"),
+    url(r'^signup/$', signup, name="signup"),
+    url(r'^update/$', update, name="update"),
     url(r'^logout/$', logout, name="logout"),
 ]

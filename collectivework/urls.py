@@ -13,10 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf.urls import static
 from django.conf.urls import url, include
 from django.contrib import admin
 from postman import urls as postman_urls
 
+from collectivework import settings
 from collectivework.views import site_rules, help
 from ticket import urls as ticket_urls
 from  userprofile import urls as userprofile_urls
@@ -27,5 +29,8 @@ urlpatterns = [
     url(r'^user/', include(userprofile_urls, namespace='userprofile', app_name='userprofile')),
     url(r'^site_rules/$', site_rules, name='site_rules'),
     url(r'^help/$', help, name='help'),
-    url(r'^', include(ticket_urls, namespace="ticket", app_name="ticket"), name="index"),
+    url(r'^', include(ticket_urls, namespace="collectivework", app_name="ticket"), name="index"),
 ]
+
+if settings.DEBUG is True:
+    urlpatterns += static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
